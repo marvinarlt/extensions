@@ -1,6 +1,6 @@
 {
     "name": "Imagly",
-    "description": "Compress easily images with common types like JPG, PNG, GIF, SVG & WEBP.",
+    "description": "Simply compress images in common formats such as JPG, PNG, GIF, SVG & WEBP.",
     "version": "0.3",
     "manifest_version": 2,
     "browser_action": {
