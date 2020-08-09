@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/default-popup.css">
+    </head>
+    <body>
+        <h1>Imagly</h1>
+
+        <div class="uploadContainer">
+            <div class="uploadBox">
+                <div class="uploadWrapper">
+                    <input type="file" name="imaglyUpload" id="imaglyUpload" class="uploadInput" accept="image/*" multiple>
+                    <label for="imaglyUpload" class="uploadLabel">
+                        Drag and Drop
+                        <span class="uploadDragNDrop">
+                            <span class="highlighted">Jpg</span>,
+                            <span class="highlighted">Png</span>,
+                            <span class="highlighted">Gif</span>,
+                            <span class="highlighted">Svg</span>
+                            &amp;
+                            <span class="highlighted">Webp</span>
+                        </span>
+                    </label>
+                    <button id="imaglyCompress" class="button">Compress</button>
+                    <button id="imaglyDownload" class="button">Download</button>
+                </div>
+            </div>
+            <div class="uploadUploaded">
+                <span class="fileStateOutput"></span>
+            </div>
+            <div class="uploadUploading">
+                <div class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="uploadSuccess">Done!</div>
+        </div>
+
+        <h3>Current bugs:</h3>
+        <ul>
+            <li>Webp compression in Firefox doesn't work properly</li>
+        </ul>
+
+        <p class="versionInfo">v0.2 - by Marvin Arlt</p>
+
+        <script defer type="module" src="./src/vendor/jszip.js"></script>
+        <script defer type="module" src="./src/modules/imagly.js"></script>
+        <script defer type="module" src="./src/index.js"></script>
+    </body>
+</html>

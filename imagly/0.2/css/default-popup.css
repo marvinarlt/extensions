@@ -1,0 +1,291 @@
+@font-face {
+    font-family: "Noto Sans";
+    src: url("fonts/NotoSansJP-Regular.otf");
+    font-weight: 400;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("fonts/NotoSansJP-Medium.otf");
+    font-weight: 500;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("fonts/NotoSansJP-Bold.otf");
+    font-weight: 700;
+    font-display: auto;
+}
+
+* {
+    font-size: 1rem;
+}
+
+body {
+    width: 420px;
+    height: auto;
+    margin: 0;
+    margin: 3rem;
+    box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
+}
+
+h1 {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    line-height: 2em;
+}
+
+h3 {
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+p {
+    line-height: 1.8em;
+    color: #a6a8ab;
+}
+
+ul li {
+    line-height: 1.8em;
+    color: #a6a8ab;
+}
+
+h1::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1rem;
+    background-color: rgba(37, 203, 218, 0.4);
+    z-index: -1;
+}
+
+.uploadInput,
+.uploadUploaded,
+.uploadUploading,
+.uploadSuccess,
+.uploadError {
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+}
+
+.uploadInput {
+  display: none;
+}
+
+.uploadContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    padding: 0.7rem;
+    margin-bottom: 2rem;
+    transition: 200ms ease-in-out;
+    border: 2px dashed #d8dcdf;
+}
+
+.uploadContainer.dragging {
+    border: 2px dashed #27cada;
+}
+
+.uploadContainer.uploaded .uploadUploaded,
+.uploadContainer.loading .uploadUploaded,
+.uploadContainer.uploaded #imaglyCompress,
+.uploadContainer.done #imaglyDownload,
+.uploadContainer.loading .uploadUploading,
+.uploadContainer.done .uploadSuccess {
+  visibility: visible;
+  opacity: 1;
+}
+
+.uploadContainer.uploaded .uploadLabel,
+.uploadContainer.loading .uploadLabel,
+.uploadContainer.done .uploadLabel {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.uploadUploaded,
+.uploadUploading,
+.uploadSuccess {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.uploadSuccess {
+    color: #a6a8ab;
+}
+
+.uploadUploaded {
+    transform: translate(-50%, 50%);
+    font-size: 1.2rem;
+    color: #a6a8ab;
+}
+
+.uploadBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.uploadWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploadBox .button {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.uploadLabel {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    line-height: 1.7em;
+    color: #a6a8ab;
+    transform: translateY(1.5rem);
+    visibility: visible;
+    opacity: 1;
+    transition: 200ms ease-in-out;
+}
+
+.uploadLabel::before, .uploadContainer.uploaded .uploadUploaded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -130%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("../icons/add.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.uploadContainer.uploaded .uploadUploaded::before {
+    background-image: url("../icons/collections.svg");
+}
+
+.uploadDragNDrop {
+    display: block;
+}
+
+#imaglyCompress,
+#imaglyDownload {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+
+.highlighted {
+    color: #27cada;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: none;
+    background-color: #27cada;
+    color: white;
+    box-shadow: 0 3px 8px rgba(123, 159, 162, 0.6);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+}
+
+.button:hover {
+    background-color: #8ae6ef;
+}
+
+.button:focus, .button:active {
+    outline: black revert 2px;
+}
+
+.versionInfo {
+    margin: 3rem 0 0 0;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+/* Loader */
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #27cada;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+    transform: scale(0);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+    transform: scale(1);
+    }
+    100% {
+    transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
